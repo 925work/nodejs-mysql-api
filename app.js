@@ -1,9 +1,12 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+const postsRoute = require("./routes/posts");
+
+app.use(express.urlencoded());
+
+app.use("/posts", postsRoute);
 
 module.exports = app;
